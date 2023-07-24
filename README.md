@@ -1,32 +1,32 @@
 
-Hexalter v0.3
--------------
+HexAlter v0.3
+=============
 
 This is a quick (but hopefully not dirty) implementation of a primitive hex alterer.  Usage
 is very simple:
 
-hexalter [-i] file address1=byte1,..,byten ... addressn=byte1,...,byten
+    hexalter [-i] file address1=byte1,..,byten ... addressn=byte1,...,byten
 
 Either hexalter will alter file directly or with the -i option will create an ips file for
 patching.
 
 For example:
 
-hexalter foo.txt 0x4=1,2,3 0x20=0xa0 0xff=4
+    hexalter foo.txt 0x4=1,2,3 0x20=0xa0 0xff=4
 
 Changes:
 
 address | new value
 -------------------
-4       | 1
-5       | 2
-6       | 3
-32      | 160
-255     | 4
+4       | 1  
+5       | 2  
+6       | 3  
+32      | 160  
+255     | 4  
 
 Or:
 
-hexalter -i foo.ips 0x4=1,2,3 0x20=0xa0 0xff=4
+    hexalter -i foo.ips 0x4=1,2,3 0x20=0xa0 0xff=4
 
 Creates foo.ips, which can be used to make the above mentioned changes.
 
