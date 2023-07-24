@@ -1,14 +1,14 @@
-# HexAlter
 
-Hexalter v0.1
+Hexalter v0.3
 -------------
-
-(This is a reupload, I couldn't find the source code on GitHub so I decided to publish it here)
 
 This is a quick (but hopefully not dirty) implementation of a primitive hex alterer.  Usage
 is very simple:
 
-hexalter file_to_edit address1=byte1,..,byten ... addressn=byte1,...,byten
+hexalter [-i] file address1=byte1,..,byten ... addressn=byte1,...,byten
+
+Either hexalter will alter file directly or with the -i option will create an ips file for
+patching.
 
 For example:
 
@@ -24,11 +24,15 @@ address | new value
 32      | 160
 255     | 4
 
-If addresses overlap, the earlier changes will overwrite the later changes.  You probably
-shouldn't rely upon this feature, though.
+Or:
 
-If address is out of range or byte values are too high/low or address or byte values aren't
-entered in decimal or hexademical, hexalter should refuse to patch.
+hexalter -i foo.ips 0x4=1,2,3 0x20=0xa0 0xff=4
 
-If during the actual apply phase some are happens, only some changes might be applied.
-WW
+Creates foo.ips, which can be used to make the above mentioned changes.
+
+Addresses may not overlap.  If address is out of range or byte values are too high/low or
+address or byte values aren't entered in decimal or hexademical, hexalter should refuse
+to patch.  IPS files are bound to 16MiB, due to a limitation in IPS's ability to only
+store 24-bit addresses.
+
+If during the actual apply phase some error happens, only some changes might be applied.
