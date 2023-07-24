@@ -18,12 +18,12 @@ Will make the following changes:
 
 **[ Offset Address | New Hex Value | New Char8_t Value ]**
 
-0x4       | 31 | 1  
-0x5       | 32 | 2  
-0x6       | 33 | 3  
-0x20      | A0  
-0xFF     | 34 | 4  
-0x29F8 | 20  
+    0x4       |    31    |    1  
+    0x5       |    32    |    2  
+    0x6       |    33    |    3  
+    0x20      |    A0  
+    0xFF      |    34    |    4  
+    0x29F8    |    20  
 
 Or:
 
