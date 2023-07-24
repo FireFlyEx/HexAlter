@@ -2,17 +2,17 @@
 HexAlter v0.3
 =============
 
-This is a quick (but hopefully not dirty) implementation of a primitive hex alterer.  Usage
+This is a quick (but hopefully not dirty) implementation of a primitive command-line hex editor.  Usage
 is very simple:
 
     hexalter [-i] file address1=byte1,..,byten ... addressn=byte1,...,byten
 
 Either hexalter will alter file directly or with the -i option will create an ips file for
-patching.
+ROM patching.
 
 For example:
 
-    hexalter foo.txt 0x4=1,2,3 0x20=0xa0 0xff=4
+    hexalter foo.txt 0x4=1,2,3 0x20=0xa0 0xff=4 0x1ffffffff=32
 
 Changes:
 
@@ -23,6 +23,7 @@ address | new value
 6       | 3  
 32      | 160  
 255     | 4  
+8589934591 | 32  
 
 Or:
 
