@@ -5,14 +5,14 @@ HexAlter v0.3
 This is a quick (but hopefully not dirty) implementation of a primitive command-line hex editor.  Usage
 is very simple:
 
-    hexalter [-i] file address1=byte1,..,byten ... addressn=byte1,...,byten
+    hexalter [-i] file address1=hex1,hex2,...,hexn addressn=hex1,...,hexn
 
 HexAlter will either modify files directly, or with the -i option it will create an IPS file for
 ROM patching.
 
 For example:
 
-    hexalter foo.txt 0x4=1,2,3 0x20=0xa0 0xff=4 0x29f8=32
+    hexalter foo.txt 0x4=0x31,0x32,0x33 0x20=0xa0 0xff=0x34 0x29f8=0x20
 
 Will make the following changes:
 
@@ -27,12 +27,11 @@ Will make the following changes:
 
 Or:
 
-    hexalter -i foo.ips 0x4=1,2,3 0x20=0xa0 0xff=4
+    hexalter -i foo.ips 0x4=0x31,0x32,0x33 0x20=0xa0 0xff=0x34 0x29f8=0x20
 
 Creates foo.ips, which can be used to make the above mentioned changes.
 
-Addresses may not overlap.  If address is out of range or byte values are too high/low or
-address or byte values aren't entered in ***decimal*** or ***hexademical***, hexalter should refuse
+Addresses may not overlap.  If offset address is out of range or values aren't entered in ***hexadecimal***, HexAlter should refuse
 to patch.  IPS files are bound to 16MB, due to a limitation in IPS's ability to only
 store 24-bit addresses.
 
